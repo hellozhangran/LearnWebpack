@@ -1,10 +1,10 @@
 /**
  * 开始讲Loader
- * 1. 安装最基本的css-loader: npm install --save-dev css-loader style-loader
- * 2. 按下面的配置写，然后执行webpack
- * 3. main.js中的require('style.css')会被加载到js文件中。
- * 4. 如果我们想用less，而且是单独编译css文件，看webpack.config.less.js
- *
+ * 1. 安装最基本的css-loader: npm install --save-dev css-loader style-loader。
+ * 2. 按下面的配置写。
+ * 3. main.js中的require('style.css')会被加载到js文件中，然后执行webpack。
+ * 4. 想用less-loader： npm install --save-dev less-loader less
+ * 5. 如下配置。
  */
 module.exports = {
     entry:__dirname + '/main.js',//这个地方记得不能是'./main.js'
@@ -14,7 +14,8 @@ module.exports = {
     },
     module:{
         loaders:[
-            {test:/\.css$/,loader:'style!css'}
+            {test:/\.css$/,loader:'style!css'},
+            {test:/\.less$/,loader:'style!css!less'},
         ]
     }
 }
