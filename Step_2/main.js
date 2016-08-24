@@ -1,3 +1,3 @@
 require('./style.less');
-require('module-test');
-document.write('<h1>Hello World</h1>');
+var profile = require('zhangran');
+document.write('<h1>Hello:'+profile.name+'</h1>');
