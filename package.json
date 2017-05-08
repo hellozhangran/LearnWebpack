@@ -1,0 +1,24 @@
+{
+  "name": "learnwebpack",
+  "version": "1.0.0",
+  "description": "Webpack入门学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellozhangran/LearnWebpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellozhangran/LearnWebpack/issues"
+  },
+  "homepage": "https://github.com/hellozhangran/LearnWebpack#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.28.0",
+    "ts-loader": "^2.0.3",
+    "webpack": "^2.5.1"
+  }
+}
