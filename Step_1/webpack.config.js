@@ -1,21 +1,33 @@
 /**
- * 开始讲Loader
- * 1. 安装最基本的css-loader: npm install --save-dev css-loader style-loader。
- * 2. 按下面的配置写。
- * 3. main.js中的require('style.css')会被加载到js文件中，然后执行webpack。
- * 4. 想用less-loader： npm install --save-dev less-loader less
- * 5. 如下配置。
+ * Step_1主要讲解文件入口entry的使用
+ * 1. entry但入口文件，是最简单的方式。
+ * 2. 如果应用是多页面应用就需要entry是一个对象，分列出不同的入口文件。
+ * 3. 如果多个入口文件都引用了相同的模块（常常是一些公用模块），此时可通过CommonsChunkPlugin插件把公用模块提取出来，减少重复引用。
  */
+var path = require('path');
+var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    entry:__dirname + '/main.js',//这个地方记得不能是'./main.js'
+    //entry:__dirname + '/main.js',
+    //entry:path.resolve(__dirname + '/src/*.js'), ❌ entry不能用通配符
+    entry:{
+        index:'./src/js/index.js',
+        page:'./src/js/page.js'
+    },
+    devtool:'source-map',
     output:{
         path:__dirname + '/dist',
-        filename:'bundle.js'
+        filename:'[name].bundle.js'
+        //filename:'[name].[id].[hash].[chunkhash].bundle.js'
     },
-    module:{
-        loaders:[
-            {test:/\.css$/,loader:'style!css'},
-            {test:/\.less$/,loader:'style!css!less'},
-        ]
-    }
+    plugins: [
+        //index page两个入口文件中都引用了相同模块
+        new webpack.optimize.CommonsChunkPlugin({ 
+            name: "commons",
+            filename: "commons.js",
+            chunks: ["index", "page"],//指定合并哪些文件中的相同模块
+        }),
+        new HtmlWebpackPlugin({template: './src/index.html'})
+    ]
 }
