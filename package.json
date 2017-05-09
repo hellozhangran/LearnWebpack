@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/hellozhangran/LearnWebpack#readme",
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
     "html-webpack-plugin": "^2.28.0",
     "ts-loader": "^2.0.3",
     "webpack": "^2.5.1"
